@@ -11,9 +11,8 @@ Um sistema de E-commerce desenvolvido do zero utilizando **PHP Nativo** e arquit
 
 ## 📸 Screenshots
 
-*(Você pode adicionar prints do seu projeto aqui depois)*
-<div style="display: flex; gap: 10px;">
-  <img src="view/img/banner.png" alt="Banner" width="100%">
+<div align="center">
+  <img src="![Image](https://github.com/user-attachments/assets/6d3613ed-b962-4960-ba31-04eb92d3dca6)" alt="Tela Inicial" width="700">
 </div>
 
 ---
