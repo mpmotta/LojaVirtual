@@ -12,7 +12,7 @@ Um sistema de E-commerce desenvolvido do zero utilizando **PHP Nativo** e arquit
 ## 📸 Screenshots
 
 <div align="center">
-  <img src="![Image](https://github.com/user-attachments/assets/6d3613ed-b962-4960-ba31-04eb92d3dca6)" alt="Tela Inicial" width="700">
+  <img src="https://github.com/user-attachments/assets/6d3613ed-b962-4960-ba31-04eb92d3dca6" alt="Tela Inicial" width="700">
 </div>
 
 ---
