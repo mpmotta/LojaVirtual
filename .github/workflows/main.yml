@@ -18,10 +18,10 @@ jobs:
           composer dump-autoload -o
 
       - name: Corrigir quebras de linha e estilo automaticamente
-        run: ./vendor/bin/phpcbf --standard=PSR12 controller/ model/ || true
+        run: php vendor/bin/phpcbf --standard=PSR12 controller/ model/ || true
 
       - name: Verificação de Estilo
-        run: ./vendor/bin/phpcs --standard=PSR12 controller/ model/
+        run: php vendor/bin/phpcs --standard=PSR12 controller/ model/
 
       - name: Rodar Testes
-        run: ./vendor/bin/phpunit
+        run: php vendor/bin/phpunit
