@@ -4,6 +4,8 @@
         "squizlabs/php_codesniffer": "^3.7"
     },
     "autoload": {
-        "classmap": ["controller/", "model/"]
+        "psr-4": {
+            "App\\": ""
+        }
     }
 }
