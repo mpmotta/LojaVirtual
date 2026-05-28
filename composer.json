@@ -5,12 +5,13 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "App\\Controller\\": "controller/",
+            "App\\Model\\": "model/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "App\\": ["controller/", "model/", "tests/"]
+            "App\\Tests\\": "tests/"
         }
     }
 }
