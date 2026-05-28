@@ -1,56 +1,35 @@
 <?php
 
-namespace App\Tests;
+namespace App\Controller;
 
-use PHPUnit\Framework\TestCase;
-use App\Controller\ProdutoController;
 use App\Model\Produto;
 
-class ProdutoControllerTest extends TestCase
+class ProdutoController
 {
-    public function testConsultaRetornaArray()
+    private $produtoModel;
+
+    public function __construct()
     {
-        $controller = new ProdutoController();
-        $this->assertIsArray($controller->consulta());
+        $this->produtoModel = new Produto();
     }
 
-    public function testProdutoPodeSerInstanciado()
+    public function consulta()
     {
-        $produto = new Produto();
-        $this->assertInstanceOf(Produto::class, $produto);
+        return $this->produtoModel->listarTodos();
     }
 
-    public function testListarTodosRetornaArray()
+    public function consultaPorCategoria($categoria)
     {
-        $produto = new Produto();
-        $this->assertIsArray($produto->listarTodos());
+        return $this->produtoModel->listarPorCategoria($categoria);
     }
 
-    public function testListarPorCategoriaRetornaArray()
+    public function buscarPorId($id)
     {
-        $produto = new Produto();
-        $resultado = $produto->listarPorCategoria('Eletrônicos');
-        $this->assertIsArray($resultado);
+        return $this->produtoModel->buscarPorId($id);
     }
 
-    public function testBuscarPorIdRetornaArrayOuFalse()
+    public function buscarPorNome($termo)
     {
-        $produto = new Produto();
-        $resultado = $produto->buscarPorId(999999);
-        $this->assertIsArray($resultado);
-    }
-
-    public function testBuscarPorNomeRetornaArray()
-    {
-        $produto = new Produto();
-        $resultado = $produto->buscarPorNome('teste');
-        $this->assertIsArray($resultado);
-    }
-
-    public function testBuscaPorNomeComCaracteresMaliciosos()
-    {
-        $produto = new Produto();
-        $resultado = $produto->buscarPorNome("' OR 1=1 --");
-        $this->assertIsArray($resultado);
+        return $this->produtoModel->buscarPorNome($termo);
     }
 }
