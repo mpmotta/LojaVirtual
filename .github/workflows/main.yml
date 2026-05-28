@@ -1,21 +1,17 @@
 name: CI PHP
 on: [push]
-
 jobs:
   testes:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Configurar PHP
+      - name: Instalar PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
-
-      - name: Instalar dependências e gerar Autoload
+      - name: Instalar dependências
         run: |
-          composer install --prefer-dist
+          composer install
           composer dump-autoload
-
       - name: Rodar Testes
         run: vendor/bin/phpunit tests/
