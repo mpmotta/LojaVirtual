@@ -1,8 +1,10 @@
 <?php
-// Inicia sessão
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use App\Controller\ProdutoController;
+
 if (session_status() === PHP_SESSION_NONE) { session_start(); }
 
-// Contagem do carrinho
 $qtdCarrinho = 0;
 if (isset($_SESSION['carrinho'])) {
     $qtdCarrinho = array_sum($_SESSION['carrinho']);
@@ -38,7 +40,6 @@ if (isset($_SESSION['carrinho'])) {
   </header> 
 
   <?php
-      require_once('../controller/produtoController.php');
       $controller = new ProdutoController(); 
 
       if (isset($_GET['busca']) && !empty($_GET['busca'])) {
