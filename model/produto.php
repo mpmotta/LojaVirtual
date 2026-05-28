@@ -11,6 +11,9 @@ class Produto {
 
     // 1. Listar tudo (Home)
     public function listarTodos() {
+        if ($this->conn === null) {
+            return [];
+        }
         $query = "SELECT * FROM produtos ORDER BY id DESC";
         $stmt = $this->conn->prepare($query);
         $stmt->execute();
@@ -19,6 +22,9 @@ class Produto {
 
     // 2. Listar por Categoria
     public function listarPorCategoria($categoria) {
+        if ($this->conn === null) {
+            return [];
+        }
         $query = "SELECT * FROM produtos WHERE categoria = :cat ORDER BY id DESC";
         $stmt = $this->conn->prepare($query);
         $stmt->bindValue(':cat', $categoria);
@@ -28,6 +34,9 @@ class Produto {
 
     // 3. Buscar um produto específico (Detalhes)
     public function buscarPorId($id) {
+        if ($this->conn === null) {
+            return [];
+        }
         $query = "SELECT * FROM produtos WHERE id = :id LIMIT 1";
         $stmt = $this->conn->prepare($query);
         $stmt->bindValue(':id', $id);
@@ -37,6 +46,9 @@ class Produto {
 
     // 4. Buscar por Nome (Barra de Pesquisa)
     public function buscarPorNome($termo) {
+        if ($this->conn === null) {
+            return [];
+        }
         $query = "SELECT * FROM produtos WHERE nome LIKE :termo ORDER BY id DESC";
         $stmt = $this->conn->prepare($query);
         $stmt->bindValue(':termo', "%" . $termo . "%");
