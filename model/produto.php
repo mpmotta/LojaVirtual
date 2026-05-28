@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use PDO;
+use App\Model\Conexao;
 
 class Produto
 {
@@ -10,7 +11,7 @@ class Produto
 
     public function __construct()
     {
-        $database = new \Conexao();
+        $database = new Conexao();
         $this->conn = $database->getConnection();
     }
 
