@@ -15,10 +15,10 @@ jobs:
       - name: Instalar dependências
         run: |
           composer install
-          composer dump-autoload
+          composer dump-autoload -o
 
       - name: Verificação de Estilo
-        run: ./vendor/bin/phpcs --standard=PSR12 controller/ model/ || true
+        run: ./vendor/bin/phpcs --standard=PSR12 controller/ model/
 
       - name: Rodar Testes
         run: ./vendor/bin/phpunit
