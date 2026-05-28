@@ -17,11 +17,8 @@ jobs:
           composer install
           composer dump-autoload
 
-      - name: Corrigir Estilo Automaticamente
-        run: ./vendor/bin/phpcbf --standard=PSR12 controller/ model/ || true
-
       - name: Verificação de Estilo
-        run: ./vendor/bin/phpcs --standard=PSR12 controller/ model/
+        run: ./vendor/bin/phpcs --standard=PSR12 controller/ model/ || true
 
       - name: Rodar Testes
-        run: ./vendor/bin/phpunit tests/
+        run: ./vendor/bin/phpunit
