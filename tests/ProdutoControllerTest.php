@@ -1,10 +1,14 @@
 <?php
 use PHPUnit\Framework\TestCase;
-require_once __DIR__ . '/../controller/ProdutoController.php';
-require_once __DIR__ . '/../model/Produto.php';
+
+// Carrega as ferramentas do Composer (incluindo o PHPUnit e seu autoload)
+require_once __DIR__ . '/../vendor/autoload.php';
 
 class ProdutoControllerTest extends TestCase {
     public function testConsultaRetornaArray() {
-        $this->assertTrue(true); // Teste de fumaça inicial
+        // Como o classmap foi configurado, a classe ProdutoController 
+        // será carregada automaticamente pelo autoload
+        $controller = new ProdutoController();
+        $this->assertIsArray($controller->consulta());
     }
 }
