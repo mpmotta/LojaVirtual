@@ -15,7 +15,7 @@ class Produto
         $this->conn = $database->getConnection();
     }
 
-    public function listarTodos()
+    public function listar_todos()
     {
         if ($this->conn === null) {
             return [];
