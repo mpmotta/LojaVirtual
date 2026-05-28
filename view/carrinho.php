@@ -1,5 +1,7 @@
 <?php
-require_once('../controller/carrinhoController.php');
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use App\Controller\CarrinhoController;
 
 $carrinhoCtrl = new CarrinhoController();
 
@@ -16,7 +18,6 @@ $dados = $carrinhoCtrl->listarItens();
 $itens = $dados['itens'];
 $total = $dados['total'];
 
-// Contagem para o badge
 $qtdCarrinho = 0;
 if (isset($_SESSION['carrinho'])) {
     $qtdCarrinho = array_sum($_SESSION['carrinho']);
