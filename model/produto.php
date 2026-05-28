@@ -1,16 +1,21 @@
 <?php
-require_once __DIR__ . '/../vendor/autoload.php';
 
-class Produto {
+namespace App\Model;
+
+use PDO;
+
+class Produto
+{
     private $conn;
 
-    public function __construct() {
-        $database = new Conexao();
+    public function __construct()
+    {
+        $database = new \Conexao();
         $this->conn = $database->getConnection();
     }
 
-    // 1. Listar tudo (Home)
-    public function listarTodos() {
+    public function listarTodos()
+    {
         if ($this->conn === null) {
             return [];
         }
@@ -20,8 +25,8 @@ class Produto {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // 2. Listar por Categoria
-    public function listarPorCategoria($categoria) {
+    public function listarPorCategoria($categoria)
+    {
         if ($this->conn === null) {
             return [];
         }
@@ -32,8 +37,8 @@ class Produto {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // 3. Buscar um produto específico (Detalhes)
-    public function buscarPorId($id) {
+    public function buscarPorId($id)
+    {
         if ($this->conn === null) {
             return [];
         }
@@ -44,8 +49,8 @@ class Produto {
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    // 4. Buscar por Nome (Barra de Pesquisa)
-    public function buscarPorNome($termo) {
+    public function buscarPorNome($termo)
+    {
         if ($this->conn === null) {
             return [];
         }
@@ -56,4 +61,3 @@ class Produto {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
-?>
