@@ -8,15 +8,11 @@ use App\Model\Produto;
 
 class ProdutoControllerTest extends TestCase
 {
-    // --- TESTES DO CONTROLLER ---
-
     public function testConsultaRetornaArray()
     {
         $controller = new ProdutoController();
         $this->assertIsArray($controller->consulta());
     }
-
-    // --- TESTES DO MODEL (PRODUTO) ---
 
     public function testProdutoPodeSerInstanciado()
     {
@@ -50,8 +46,6 @@ class ProdutoControllerTest extends TestCase
         $resultado = $produto->buscarPorNome('teste');
         $this->assertIsArray($resultado);
     }
-
-    // --- TESTE DE SEGURANÇA (SQL INJECTION) ---
 
     public function testBuscaPorNomeComCaracteresMaliciosos()
     {
