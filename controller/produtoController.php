@@ -1,25 +1,35 @@
 <?php
-class ProdutoController {
+
+namespace App\Controller;
+
+use App\Model\Produto;
+
+class ProdutoController
+{
     private $produtoModel;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->produtoModel = new Produto();
     }
 
-    public function consulta() {
+    public function consulta()
+    {
         return $this->produtoModel->listarTodos();
     }
 
-    public function consultaPorCategoria($categoria) {
+    public function consultaPorCategoria($categoria)
+    {
         return $this->produtoModel->listarPorCategoria($categoria);
     }
 
-    public function buscarPorId($id) {
+    public function buscarPorId($id)
+    {
         return $this->produtoModel->buscarPorId($id);
     }
 
-    public function buscarPorNome($termo) {
+    public function buscarPorNome($termo)
+    {
         return $this->produtoModel->buscarPorNome($termo);
     }
 }
-?>
