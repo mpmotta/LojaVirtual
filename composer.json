@@ -3,9 +3,6 @@
         "phpunit/phpunit": "^10.0"
     },
     "autoload": {
-        "classmap": [
-            "controller/",
-            "model/"
-        ]
+        "classmap": ["controller/", "model/"]
     }
 }
