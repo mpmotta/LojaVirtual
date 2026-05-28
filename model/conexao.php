@@ -4,7 +4,7 @@ class Conexao {
     private $host = "localhost";
     private $db_name = "loja"; // Coloque o nome do seu banco
     private $username = "root";   // Seu usuário
-    private $password = "";       // Sua senha
+    private $password = "usbw";       // Sua senha
     public $conn;
 
     public function getConnection() {
