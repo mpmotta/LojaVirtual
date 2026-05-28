@@ -10,7 +10,7 @@ class Conexao
     private $host = "localhost";
     private $db_name = "loja";
     private $username = "root";
-    private $password = "usbw";
+    private $password = "";
     public $conn;
 
     public function getConnection()
