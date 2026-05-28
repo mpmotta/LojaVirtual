@@ -1,49 +1,50 @@
 <?php
-// controller/carrinhoController.php
-require_once('../model/Produto.php');
 
-// Inicia a sessão se ainda não existir
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+namespace App\Controller;
 
-class CarrinhoController {
+use App\Model\Produto;
+
+class CarrinhoController
+{
     private $produtoModel;
 
-    public function __construct() {
+    public function __construct()
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
         $this->produtoModel = new Produto();
-        
-        // Se o carrinho não existe na sessão, cria um array vazio
+
         if (!isset($_SESSION['carrinho'])) {
             $_SESSION['carrinho'] = [];
         }
     }
 
-    // Adiciona item ao carrinho
-    public function adicionar($id) {
+    public function adicionar($id)
+    {
         if (isset($_SESSION['carrinho'][$id])) {
-            $_SESSION['carrinho'][$id]++; // Aumenta quantidade
+            $_SESSION['carrinho'][$id]++;
         } else {
-            $_SESSION['carrinho'][$id] = 1; // Adiciona novo
+            $_SESSION['carrinho'][$id] = 1;
         }
     }
 
-    // Remove item do carrinho
-    public function remover($id) {
+    public function remover($id)
+    {
         if (isset($_SESSION['carrinho'][$id])) {
             unset($_SESSION['carrinho'][$id]);
         }
     }
 
-    // Lista os produtos completos para exibir na tela
-    public function listarItens() {
+    public function listarItens()
+    {
         $itensDetalhados = [];
         $total = 0;
 
         foreach ($_SESSION['carrinho'] as $id => $quantidade) {
             $produto = $this->produtoModel->buscarPorId($id);
             if ($produto) {
-                // Adiciona a quantidade ao objeto do produto
                 $produto['quantidade'] = $quantidade;
                 $produto['subtotal'] = $produto['valor'] * $quantidade;
                 $total += $produto['subtotal'];
@@ -54,4 +55,3 @@ class CarrinhoController {
         return ['itens' => $itensDetalhados, 'total' => $total];
     }
 }
-?>
