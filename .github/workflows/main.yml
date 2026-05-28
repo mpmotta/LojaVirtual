@@ -5,16 +5,17 @@ jobs:
   testes:
     runs-on: ubuntu-latest
     steps:
-      - name: Baixar código do repositório
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Instalar PHP
+      - name: Configurar PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.2'
 
-      - name: Instalar dependências (Composer)
-        run: composer install --prefer-dist --no-progress
+      - name: Instalar dependências e gerar Autoload
+        run: |
+          composer install --prefer-dist
+          composer dump-autoload
 
       - name: Rodar Testes
         run: vendor/bin/phpunit tests/
