@@ -1,7 +1,4 @@
 <?php
-// Importa o Model (ajuste o caminho se necessário)
-require_once('../model/Produto.php');
-
 class ProdutoController {
     private $produtoModel;
 
