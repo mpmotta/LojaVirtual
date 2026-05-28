@@ -1,35 +1,56 @@
 <?php
 
-namespace App\Controller;
+namespace App\Tests;
 
+use PHPUnit\Framework\TestCase;
+use App\Controller\ProdutoController;
 use App\Model\Produto;
 
-class ProdutoController
+class ProdutoControllerTest extends TestCase
 {
-    private $produtoModel;
-
-    public function __construct()
+    public function testConsultaRetornaArray()
     {
-        $this->produtoModel = new Produto();
+        $controller = new ProdutoController();
+        $this->assertIsArray($controller->consulta());
     }
 
-    public function consulta()
+    public function testProdutoPodeSerInstanciado()
     {
-        return $this->produtoModel->listarTodos();
+        $produto = new Produto();
+        $this->assertInstanceOf(Produto::class, $produto);
     }
 
-    public function consultaPorCategoria($categoria)
+    public function testListarTodosRetornaArray()
     {
-        return $this->produtoModel->listarPorCategoria($categoria);
+        $produto = new Produto();
+        $this->assertIsArray($produto->listarTodos());
     }
 
-    public function buscarPorId($id)
+    public function testListarPorCategoriaRetornaArray()
     {
-        return $this->produtoModel->buscarPorId($id);
+        $produto = new Produto();
+        $resultado = $produto->listarPorCategoria('Eletrônicos');
+        $this->assertIsArray($resultado);
     }
 
-    public function buscarPorNome($termo)
+    public function testBuscarPorIdRetornaArrayOuFalse()
     {
-        return $this->produtoModel->buscarPorNome($termo);
+        $produto = new Produto();
+        $resultado = $produto->buscarPorId(999999);
+        $this->assertIsArray($resultado);
+    }
+
+    public function testBuscarPorNomeRetornaArray()
+    {
+        $produto = new Produto();
+        $resultado = $produto->buscarPorNome('teste');
+        $this->assertIsArray($resultado);
+    }
+
+    public function testBuscaPorNomeComCaracteresMaliciosos()
+    {
+        $produto = new Produto();
+        $resultado = $produto->buscarPorNome("' OR 1=1 --");
+        $this->assertIsArray($resultado);
     }
 }
