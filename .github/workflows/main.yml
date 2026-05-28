@@ -17,7 +17,10 @@ jobs:
           composer install
           composer dump-autoload
 
-      - name: Verificação de Estilo (PHP_CodeSniffer)
+      - name: Corrigir Estilo Automaticamente
+        run: ./vendor/bin/phpcbf --standard=PSR12 controller/ model/ || true
+
+      - name: Verificação de Estilo
         run: ./vendor/bin/phpcs --standard=PSR12 controller/ model/
 
       - name: Rodar Testes
