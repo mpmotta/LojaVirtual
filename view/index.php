@@ -6,6 +6,7 @@ use App\Controller\ProdutoController;
 if (session_status() === PHP_SESSION_NONE) { session_start(); }
 
 $qtdCarrinho = 0;
+corrigir aqui
 if (isset($_SESSION['carrinho'])) {
     $qtdCarrinho = array_sum($_SESSION['carrinho']);
 }
