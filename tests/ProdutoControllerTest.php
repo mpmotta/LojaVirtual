@@ -23,7 +23,7 @@ class ProdutoControllerTest extends TestCase
     public function testListarTodosRetornaArray()
     {
         $produto = new Produto();
-        $this->assertIsArray($produto->listar_Todos());
+        $this->assertIsArray($produto->listarTodos());
     }
 
     public function testListarPorCategoriaRetornaArray()
