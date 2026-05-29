@@ -15,7 +15,7 @@ class ProdutoController
 
     public function consulta()
     {
-        return $this->produtoModel->listar_Todos();
+        return $this->produtoModel->listarTudo();
     }
 
     public function consultaPorCategoria($categoria)
